@@ -1,0 +1,31 @@
+services:
+  mock-api:
+    image: mockoon/cli:9.6.1
+    command: ["--data", "/data/mockoon-data.json", "--port", "3000"]
+    volumes:
+      - ./mockoon-data.json:/data/mockoon-data.json:ro
+    ports:
+      - "3001:3000"
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:3000/api/product?limit=1').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))",
+        ]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      MOCK_API_URL: http://mock-api:3000
+    depends_on:
+      mock-api:
+        condition: service_healthy
+    ports:
+      - "8080:3000"
