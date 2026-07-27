@@ -99,8 +99,5 @@ AI tách loading state thành ba component riêng: kiểm tra phiên đăng nh�
 
 ### Đánh giá của tôi
 
-Tôi giữ cách triển khai này vì component tái sử dụng rõ ràng, có thông báo dành cho screen reader, hỗ trợ reduced motion và giúp hạn chế layout shift trong khi tải dữ liệu.
+Tôi giữ cách triển khai này vì component tái sử dụng rõ ràng, có thông báo dành cho screen reader, hỗ trợ reduced motion và giúp hạn chế layout shift trong khi tải dữ liệu.....
 
----
-
-Khi tiếp tục chỉnh sửa bài, bổ sung mỗi quyết định quan trọng và copy nguyên prompt AI đã dùng vào file này.
